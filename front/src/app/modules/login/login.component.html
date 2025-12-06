@@ -1,40 +1,50 @@
-<p-card header="Login" class="login">
-  <div class="login__img">
-    <img src="" alt="" />
-  </div>
-
-  <form [formGroup]="loginForm" class="login__form" id="form">
-    <div>
-      <label for="email">Email</label>
-      <input
-        type="email"
-        pInputText
-        formControlName="email"
-        class="email"
-        id="email"
+<div class="login">
+  <div class="login__background">
+    <div class="login__img">
+      <img
+        src="../../../assets/img/Farma-Educ-Logo.png"
+        alt="Mascote FarmaEduc"
       />
+      <p>FarmaEduc
+      </p>
     </div>
 
-    <div>
-      <label for="password">Senha</label>
-      <input
-        formControlName="password"
-        type="password"
-        name="password"
-        pInputText
-        id="password"
-      />
+    <h1 class="login__title">Bem-vindo ao FarmaEduc</h1>
+
+    <div class="login__box">
+      <form [formGroup]="loginForm" class="login__form" id="form">
+        <div>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            pInputText
+            formControlName="email"
+            class="email"
+            id="email"
+          />
+        </div>
+
+        <div>
+          <label for="password">Senha</label>
+          <input
+            formControlName="password"
+            type="password"
+            name="password"
+            pInputText
+            id="password"
+          />
+        </div>
+      </form>
     </div>
-
-  </form>
-
-  <div class="login__buttons">
-    <button
-      pButton
-      pRipple
-      label="Cadastrar-se"
-      (click)="irParaCadastro()"
-    ></button>
-    <button pButton pRipple label="Login"></button>
+    <div class="login__buttons">
+      <button
+        class="btn btn--primary"
+        pButton
+        pRipple
+        label="Cadastrar-se"
+        (click)="irParaCadastro()"
+      ></button>
+      <button class="btn btn--secondary" pButton pRipple label="Login"></button>
+    </div>
   </div>
-</p-card>
+</div>

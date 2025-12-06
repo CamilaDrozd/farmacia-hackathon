@@ -1,73 +1,135 @@
-<p-card header="Cadastro">
+<p-card header="Cadastro" class="cadastro__row">
   <div class="cadastro">
     <form [formGroup]="form" class="cadastro__form">
-      <div class="cadastro__form-group">
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" pInputText formControlName="nome" />
-      </div>
+      <p-stepper [linear]="true">
+        <p-stepperPanel header="Dados Pessoais">
+          <ng-template
+            pTemplate="content"
+            let-nextCallback="nextCallback"
+            let-index="index"
+          >
+            <div class="cadastro__form__group">
+              <label for="nome">Nome</label>
+              <input
+                type="text"
+                name="nome"
+                pInputText
+                formControlName="nome"
+              />
+            </div>
+            <div class="cadastro__form__group">
+              <label for="cpf">CPF</label>
+              <p-inputMask
+                mask="999-999-999-99"
+                slotChar="___-___-___-__"
+                id="cpf"
+              />
+            </div>
+            <div class="cadastro__buttons">
+              <button
+              class="btn"
+                pButton
+                pRipple
+                label="Voltar para login"
+                type="button"
+                (click)="irParaLogin()"
+              ></button>
+            </div>
+            <p-button
+            class="btn"
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              (onClick)="nextCallback.emit()"
+            />
+          </ng-template>
+        </p-stepperPanel>
 
-      <div>
-        <label for="email">Email</label>
-        <input
-          type="email"
-          pInputText
-          formControlName="email"
-          class="email"
-          id="email"
-        />
-      </div>
+        <p-stepperPanel header="Dados Escolares">
+          <ng-template
+            pTemplate="content"
+            let-prevCallback="prevCallback"
+            let-nextCallback="nextCallback"
+            let-index="index"
+          >
+            <div class="cadastro__form-group">
+              <label for="Semestre">Semestre</label>
+              <p-dropdown
+                [options]="optionsSemestre"
+                placeholder="Selecione o semestre"
+              />
+            </div>
 
-      <div>
-        <label for="cpf">CPF</label>
-        <p-inputMask mask="999-999-999-99" slotChar="___-___-___-__" id="cpf" />
-      </div>
+            <div class="cadastro__form__group">
+              <label for="faculdade">Faculdade</label>
+              <p-dropdown
+                [options]="optionsFaculdade"
+                placeholder="Selecione a faculdade"
+              />
+            </div>
+            <p-button
+            class="btn"
+              label="Back"
+              icon="pi pi-arrow-left"
+              (onClick)="prevCallback.emit()"
+            />
+            <p-button
+            class="btn"
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              (onClick)="nextCallback.emit()"
+            />
+          </ng-template>
+        </p-stepperPanel>
+        <p-stepperPanel header="Cadastro Final">
+          <ng-template
+            pTemplate="content"
+            let-prevCallback="prevCallback"
+            let-index="index"
+          >
+            <div class="cadastro__form__group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                pInputText
+                formControlName="email"
+                class="email"
+                id="email"
+              />
+            </div>
 
-      <div class="cadastro__form-group">
-        <label for="Semestre">Semestre</label>
-        <p-dropdown
-          [options]="optionsSemestre"
-          placeholder="Selecione o semestre"
-        />
-      </div>
+            <div class="cadastro__form-group">
+              <label for="senha">Senha</label>
+              <input
+                type="password"
+                name="senha "
+                pInputText
+                formControlName="senha"
+              />
+            </div>
 
-      <div>
-        <label for="faculdade">Faculdade</label>
-        <p-dropdown
-          [options]="optionsFaculdade"
-          placeholder="Selecione a faculdade"
-        />
-      </div>
-
-      <div class="cadastro__form-group">
-        <label for="senha">Senha</label>
-        <input
-          type="password"
-          name="senha "
-          pInputText
-          formControlName="senha"
-        />
-      </div>
-
-      <div class="cadastro__form-group">
-        <label for="confirmarSenha">Confirme a senha</label>
-        <input
-          type="password"
-          name="confirmarSenha"
-          pInputText
-          formControlName="confirmarSenha"
-        />
-      </div>
+            <div class="cadastro__form-group">
+              <label for="confirmarSenha">Confirme a senha</label>
+              <input
+                type="password"
+                name="confirmarSenha"
+                pInputText
+                formControlName="confirmarSenha"
+              />
+            </div>
+            <div class="cadastro__buttons">
+              <button pButton pRipple label="Cadastrar-se"></button>
+            </div >
+            <p-button
+            class="btn"
+              label="Back"
+              icon="pi pi-arrow-left"
+              (onClick)="prevCallback.emit()"
+            />
+          </ng-template>
+        </p-stepperPanel>
+      </p-stepper>
     </form>
-
-    <div class="cadastro__buttons">
-      <button pButton pRipple label="Cadastrar-se"></button>
-      <button
-        pButton
-        pRipple
-        label="Voltar para login"
-        type="button"
-        (click)="irParaLogin()"
-      ></button>
-    </div>
   </div>
 </p-card>

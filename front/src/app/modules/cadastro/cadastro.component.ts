@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { Router, RouterModule } from '@angular/router';
 import { Ripple } from "primeng/ripple";
+import { StepperModule } from 'primeng/stepper';
 
 
 @Component({
@@ -29,7 +30,8 @@ import { Ripple } from "primeng/ripple";
     ButtonModule,
     FloatLabelModule,
     RouterModule,
-    Ripple
+    Ripple,
+    StepperModule
 ],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss',
