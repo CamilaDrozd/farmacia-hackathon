@@ -3,7 +3,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   width: 100%;
-  max-width: 40rem;
+  max-width: 50rem;
   margin: 0 auto;
 
   &__form {
@@ -24,7 +24,6 @@
       margin-bottom: 1rem;
 
       label {
-        margin: 5rem;
         font-size: 1.3rem;
       }
 
