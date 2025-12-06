@@ -1,28 +1,35 @@
-<p-card header="Card Game">
-  @if (cardAtual) {
-  <p>{{ cardAtual.pergunta }}</p>
-  @for (item of cardAtual.alternativas; track $index) {
-  <p-card
-    (click)="escolherResposta(item)"
-    [ngClass]="{
-      selecionado: item === resposta
-    }"
-  >
-    <ng-template pTemplate="content">
-      {{ item }}  
-    </ng-template>
-  </p-card>
-
-  <!-- <p>{{item}}</p>   -->
-  } }
-  <div>
-    <button pButton pRipple label="Cancelar"></button>
-    <button
-      pButton
-      pRipple
-      label="Confirmar"
-      [disabled]="step === cards.length - 1"
-      (click)="confirmar()"
-    ></button>
+<p-card>
+  <div class="card">
+    <div class="card__info">
+      @if (cardAtual) {
+      <p>{{ cardAtual.pergunta }}</p>
+      @for (item of cardAtual.alternativas; track $index) {
+      <button
+        pButton
+        pRipple
+        [raised]="true"
+        severity="info"
+        [loading]="loading"
+        (click)="escolherResposta(item.alternativa)"
+        [id]="item"
+        [ngClass]="{
+          selecionado: item.alternativa === resposta
+        }"
+        [label]="item.alternativa"
+      ></button>
+      } }
+    </div>
+    <div class="card__buttons">
+      <button pButton pRipple label="Cancelar"></button>
+      <button
+        pButton
+        pRipple
+        label="Confirmar"
+        [disabled]="!resposta"
+        [loading]="loading"
+        (click)="confirmar()"
+      ></button>
+    </div>
   </div>
 </p-card>
+<p-toast />
