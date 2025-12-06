@@ -1,0 +1,73 @@
+<p-card header="Cadastro">
+  <div class="cadastro">
+    <form [formGroup]="form" class="cadastro__form">
+      <div class="cadastro__form-group">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" pInputText formControlName="nome" />
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          pInputText
+          formControlName="email"
+          class="email"
+          id="email"
+        />
+      </div>
+
+      <div>
+        <label for="cpf">CPF</label>
+        <p-inputMask mask="999-999-999-99" slotChar="___-___-___-__" id="cpf" />
+      </div>
+
+      <div class="cadastro__form-group">
+        <label for="Semestre">Semestre</label>
+        <p-dropdown
+          [options]="optionsSemestre"
+          placeholder="Selecione o semestre"
+        />
+      </div>
+
+      <div>
+        <label for="faculdade">Faculdade</label>
+        <p-dropdown
+          [options]="optionsFaculdade"
+          placeholder="Selecione a faculdade"
+        />
+      </div>
+
+      <div class="cadastro__form-group">
+        <label for="senha">Senha</label>
+        <input
+          type="password"
+          name="senha "
+          pInputText
+          formControlName="senha"
+        />
+      </div>
+
+      <div class="cadastro__form-group">
+        <label for="confirmarSenha">Confirme a senha</label>
+        <input
+          type="password"
+          name="confirmarSenha"
+          pInputText
+          formControlName="confirmarSenha"
+        />
+      </div>
+    </form>
+
+    <div class="cadastro__buttons">
+      <button pButton pRipple label="Cadastrar-se"></button>
+      <button
+        pButton
+        pRipple
+        label="Voltar para login"
+        type="button"
+        (click)="irParaLogin()"
+      ></button>
+    </div>
+  </div>
+</p-card>

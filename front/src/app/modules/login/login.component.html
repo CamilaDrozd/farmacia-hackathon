@@ -1,18 +1,40 @@
-<div class="login">
+<p-card header="Login" class="login">
   <div class="login__img">
     <img src="" alt="" />
   </div>
 
-  <form class="login__form" id="form">
-    <div class="form__email">
-      <label for="email"> Digite seu email</label>
-      <input type="email" name="email" id="email" />
+  <form [formGroup]="loginForm" class="login__form" id="form">
+    <div>
+      <label for="email">Email</label>
+      <input
+        type="email"
+        pInputText
+        formControlName="email"
+        class="email"
+        id="email"
+      />
     </div>
-    <div class="form__senha">
-      <label for="password">Digite sua senha</label>
-      <input type="password" name="password" id="password" />
+
+    <div>
+      <label for="password">Senha</label>
+      <input
+        formControlName="password"
+        type="password"
+        name="password"
+        pInputText
+        id="password"
+      />
     </div>
+
   </form>
 
-  <button type="submit">Login</button>
-</div>
+  <div class="login__buttons">
+    <button
+      pButton
+      pRipple
+      label="Cadastrar-se"
+      (click)="irParaCadastro()"
+    ></button>
+    <button pButton pRipple label="Login"></button>
+  </div>
+</p-card>
