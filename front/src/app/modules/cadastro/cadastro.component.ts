@@ -72,4 +72,7 @@ export class CadastroComponent {
   irParaLogin(){
     this._router.navigate(['/login']);
   }
+  irParaHome(){
+    this._router.navigate(['/home']);
+  }
 }
