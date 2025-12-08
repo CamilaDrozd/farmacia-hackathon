@@ -29,5 +29,8 @@ export class LoginComponent {
   irParaCadastro(){
     this._router.navigate(['/cadastro']);
   }
+  irParaHome(){
+    this._router.navigate(['/home']);
+  }
 
 }
