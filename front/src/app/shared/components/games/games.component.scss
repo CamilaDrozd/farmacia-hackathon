@@ -12,13 +12,19 @@
     flex-direction: column;
     gap: 0.5rem;
     p {
-      width: 120%;
       font-weight: 700;
+      margin: 0;
     }
   }
   &__buttons {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
+  }
+
+  ng-deep {
+    .p-card .p-card-content {
+      padding: 1rem 0;
+    }
   }
 }

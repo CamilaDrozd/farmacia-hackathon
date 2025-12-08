@@ -1,0 +1,23 @@
+<div class="prescricao">
+  <div class="prescricao__text">
+    <h2>{{ title }}</h2>
+  </div>
+  <div class="prescricao__container">
+    @if (prescricao) {
+    <p>{{ enunciado }}</p>
+    <img [src]="prescricao.imagem" alt="" />
+    <p>Validações:</p>
+    <ul>
+      @for (item of prescricao.validacoes; track $index) {
+      <li>{{ item }}</li>
+      }
+    </ul>
+
+    <p>A prescrição apresentada, é valida ?</p>
+    <div class="prescricao__buttons">
+      <button pButton pRipple label="Voltar para home"></button>
+      <button pButton pRipple label="Concluir"></button>
+    </div>
+    }
+  </div>
+</div>

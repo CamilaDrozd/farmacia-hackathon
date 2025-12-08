@@ -102,8 +102,11 @@ export class GamesComponent implements OnInit {
     return this.cardAtual?.resposta === this.resposta;
   }
 
+  voltarHome(): void {
+    this._router.navigate(['/home']);
+  }
+
   escolherResposta(resposta: string): void {
     this.resposta = resposta;
-    console.log('Resposta está certa? ', this.validacao());
   }
 }

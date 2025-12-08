@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
       rota: '/grupos',
     },
     {
-      titulo: 'Qual é a indicação',
+      titulo: 'Qual é a indicação?',
       descricao:
         'Para cada medicamento apresentado, escolha a indicação terapêutica correta. Acerta garante pontos.',
       rota: '/indicacao',
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
       titulo: 'Controle especial: Jogo da dispensação',
       descricao:
         'Desafie-se a separar receitas corretas das incorretas e dominar o controle de medicamentos ',
-      rota: '/receitas',
+      rota: '/prescricao',
     },
   ];
   ngOnInit(): void {

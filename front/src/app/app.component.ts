@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
@@ -13,11 +13,11 @@ import { AvatarModule } from 'primeng/avatar';
   imports: [
     AvatarModule,
     BadgeModule,
-    RouterOutlet,
-    CommonModule,
-    SidebarModule,
     ButtonModule,
+    CommonModule,
     MenuModule,
+    SidebarModule,
+    RouterOutlet,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -27,23 +27,24 @@ export class AppComponent {
 
   visible = false;
 
+  constructor(private readonly _router: Router) {}
   items: MenuItem[] = [
     {
-      label: 'Dashboard',
+      label: 'Home',
       icon: 'pi pi-home',
-      command: () => console.log('Dashboard'),
-    },
-    {
-      label: 'Usuários',
-      icon: 'pi pi-users',
-      command: () => console.log('Usuários'),
+      routerLink: ['/home'],
+      command: () => {
+        this._router.navigate(['/home']);
+      },
+      visible: true,
+      disabled: false,
     },
     {
       label: 'Games',
       items: [
-        { label: 'Categorização' },
-        { label: 'Grupos' },
-        { label: 'Receitas' },
+        { label: 'Categorização', routerLink: ['/tipo'] },
+        { label: 'Grupos', routerLink: ['/grupos'] },
+        { label: 'Receitas', routerLink: ['/receitas'] },
       ],
     },
   ];
