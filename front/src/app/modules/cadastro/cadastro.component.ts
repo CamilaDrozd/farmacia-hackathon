@@ -71,11 +71,8 @@ export class CadastroComponent {
   irParaLogin() {
     this._router.navigate(['/login']);
   }
-<<<<<<< HEAD
-  irParaHome(){
-=======
-  irParaHome() {
->>>>>>> friend/main
-    this._router.navigate(['/home']);
-  }
+
+irParaHome() {
+  this._router.navigate(['/home']);
+}
 }
