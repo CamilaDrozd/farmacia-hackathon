@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
-import { Ripple } from 'primeng/ripple';
 import { perguntas } from '../../../db/perguntas.db';
 import { PerguntaInterface } from '../../interfaces/perguntas.interface';
-import { Medicamento } from '../../../modules/enums/medicamentos.enum';
-
+import { Medicamento } from '../../../enums/medicamentos.enum';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-games',
   standalone: true,
@@ -18,38 +19,88 @@ import { Medicamento } from '../../../modules/enums/medicamentos.enum';
     CommonModule,
     InputTextModule,
     ReactiveFormsModule,
-    Ripple,
+    RouterModule,
+    ToastModule,
   ],
+  providers: [MessageService],
   templateUrl: './games.component.html',
   styleUrl: './games.component.scss',
 })
 export class GamesComponent implements OnInit {
-  @Input() filtro: string = Medicamento.morfina;
-  bancoDados = perguntas;
+  @Output() numberOutput = new EventEmitter<any>();
+  @Input() bancoDados!: PerguntaInterface[];
+  pontos: number = 0;
   step = 0;
+  pontosMaximo: number = 50;
   cards: PerguntaInterface[] = [];
   cardAtual!: PerguntaInterface | undefined;
   resposta: string = '';
-
+  loading = false;
+  constructor(private _message: MessageService, private _router: Router) {}
   ngOnInit(): void {
-    this.cards = this.bancoDados.filter(
-      (item) => this.filtro.includes(item.medicamento)
-    );
-    console.log(this.cards);
-    
+    this.cards = this.bancoDados.map((item) => {
+      return {
+        ...item,
+        alternativas: item.alternativas.sort(() => Math.random() - 0.5),
+      };
+    });
     this.cardAtual = this.cards[this.step];
   }
 
   confirmar(): void {
     if (this.step < this.cards.length - 1) {
-      this.step += 1;
-      this.cardAtual = this.cards[this.step];
+      if (this.validacao()) {
+        this.loading = true;
+        this._message.add({
+          severity: 'success',
+          detail: `Mais ${this.pontosMaximo} pontos`,
+          life: 1000,
+        });
+        this._message.add({
+          severity: 'success',
+          detail: this.cardAtual?.alternativas.find(
+            (item) => item.alternativa === this.resposta
+          )?.message,
+        });
+        this.step += 1;
+        setTimeout(() => {
+          this.loading = false;
+        }, 100);
+        this.cardAtual = this.cards[this.step];
+        this.adicionandoPontos();
+        this.resetarPontosMaximo();
+        this.resposta = '';
+      } else {
+        this._message.add({
+          severity: 'error',
+          detail: this.cardAtual?.alternativas.find(
+            (item) => item.alternativa === this.resposta
+          )?.message,
+        });
+        this.pontosMaximo -= 10;
+      }
+    } else {
+      this._message.add({
+        severity: 'success',
+        detail: `Parabens você ganhou ${this.pontos} pontos`,
+      });
+      setTimeout(() => {
+        this._router.navigate(['/home']);
+      }, 3000);
     }
+  }
+
+  adicionandoPontos(): void {
+    this.pontos += this.pontosMaximo;
+    this.numberOutput.emit(this.pontos);
+  }
+
+  resetarPontosMaximo(): void {
+    this.pontosMaximo = 50;
   }
   validacao(): boolean {
     return this.cardAtual?.resposta === this.resposta;
   }
-
 
   escolherResposta(resposta: string): void {
     this.resposta = resposta;

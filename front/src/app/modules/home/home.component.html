@@ -1,3 +1,32 @@
-<p>home works!</p>
+<div class="home">
+  <div class="home__header">
+    <div class="home__header__info">
+      <!-- <h2>Titulo da pagina</h2> -->
+      <h3>
+        Bem vindo ao FarmaEduc, o seu portal de aprendizado sobre dispensação
+      </h3>
+    </div>
+    <div class="home__header__sequencia">
+      <!-- <p-badge value="4" badgeSize="large" severity="warning" /> -->
+    </div>
+  </div>
 
-<app-games [filtro]="filtro"></app-games>
+  <div class="home__container">
+    @for (card of cards; track $index) {
+    <p-card>
+      <div class="home__container__card">
+        <div class="home__container__card__info">
+          <span>{{ card.titulo }}</span>
+          <p>{{ card.descricao }}</p>
+        </div>
+        <button
+          pButton
+          pRipple
+          label="Acessar"
+          [routerLink]="card.rota"
+        ></button>
+      </div>
+    </p-card>
+    }
+  </div>
+</div>
