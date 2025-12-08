@@ -13,9 +13,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { Router, RouterModule } from '@angular/router';
-import { Ripple } from "primeng/ripple";
+import { Ripple } from 'primeng/ripple';
 import { StepperModule } from 'primeng/stepper';
-
 
 @Component({
   selector: 'app-cadastro',
@@ -31,8 +30,8 @@ import { StepperModule } from 'primeng/stepper';
     FloatLabelModule,
     RouterModule,
     Ripple,
-    StepperModule
-],
+    StepperModule,
+  ],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss',
 })
@@ -51,11 +50,11 @@ export class CadastroComponent {
     semestre: new FormControl(null, [Validators.required]),
   });
   optionsFaculdade: { label: string; value: any }[] = [
-    {label: 'Cruzeiro do Sul', value: 1 },
-    {label: 'Universiade Cidade de São Paulo', value: 2},
-    {label: 'Uninove', value: 3},
-    {label: 'Universidade Paulista', value: 4},
-    {label: 'Anhembi Morumbi', value: 5}
+    { label: 'Cruzeiro do Sul', value: 1 },
+    { label: 'Universiade Cidade de São Paulo', value: 2 },
+    { label: 'Uninove', value: 3 },
+    { label: 'Universidade Paulista', value: 4 },
+    { label: 'Anhembi Morumbi', value: 5 },
   ];
   optionsSemestre: { label: string; value: any }[] = [
     { label: '1º Semestre', value: 1 },
@@ -66,10 +65,13 @@ export class CadastroComponent {
     { label: '6º Semestre', value: 6 },
     { label: '7º Semestre', value: 7 },
     { label: '8º Semestre', value: 8 },
-  ]
+  ];
   constructor(private _router: Router) {}
 
-  irParaLogin(){
+  irParaLogin() {
     this._router.navigate(['/login']);
+  }
+  irParaHome() {
+    this._router.navigate(['/home']);
   }
 }

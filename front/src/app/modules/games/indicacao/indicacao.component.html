@@ -1,0 +1,20 @@
+<div class="indicacao">
+  <div class="indicacao__text">
+    <h2>{{ title }}</h2>
+    <p>Quantidade de níveis {{ dificuldade }}</p>
+    <p>XP {{ pontos }}</p>
+  </div>
+  <form [formGroup]="form">
+    <p-selectButton
+      [options]="options"
+      optionLabel="name"
+      optionValue="value"
+      formControlName="dificuldade"
+      (onChange)="alterandoDificuldade()"
+    ></p-selectButton>
+  </form>
+  <app-games
+    [bancoDados]="bancoDados"
+    (numberOutput)="alterandoPontos($event)"
+  ></app-games>
+</div>

@@ -3,6 +3,9 @@ import { LoginComponent } from './modules/login/login.component';
 import { HomeComponent } from './modules/home/home.component';
 import { CadastroComponent } from './modules/cadastro/cadastro.component';
 import { GrupoComponent } from './modules/games/grupo/grupo.component';
+import { ReceitasComponent } from './modules/games/receitas/receitas.component';
+import { IndicacaoComponent } from './modules/games/indicacao/indicacao.component';
+import { PrescricaoComponent } from './modules/games/prescricao/prescricao.component';
 
 export const routes: Routes = [
   {
@@ -26,5 +29,17 @@ export const routes: Routes = [
   {
     path: 'grupos',
     component: GrupoComponent,
+  },
+  {
+    path: 'tipo',
+    component: ReceitasComponent,
+  },
+  {
+    path: 'indicacao',
+    component: IndicacaoComponent,
+  },
+  {
+    path: 'prescricao',
+    component: PrescricaoComponent,
   },
 ];

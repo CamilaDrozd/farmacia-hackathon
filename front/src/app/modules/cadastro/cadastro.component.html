@@ -27,7 +27,7 @@
             </div>
             <div class="cadastro__buttons">
               <button
-              class="btn"
+                class="btn"
                 pButton
                 pRipple
                 label="Voltar para login"
@@ -36,7 +36,7 @@
               ></button>
             </div>
             <p-button
-            class="btn"
+              class="btn"
               label="Next"
               icon="pi pi-arrow-right"
               iconPos="right"
@@ -68,13 +68,13 @@
               />
             </div>
             <p-button
-            class="btn"
+              class="btn"
               label="Back"
               icon="pi pi-arrow-left"
               (onClick)="prevCallback.emit()"
             />
             <p-button
-            class="btn"
+              class="btn"
               label="Next"
               icon="pi pi-arrow-right"
               iconPos="right"
@@ -119,10 +119,15 @@
               />
             </div>
             <div class="cadastro__buttons">
-              <button pButton pRipple label="Cadastrar-se"></button>
-            </div >
+              <button
+                pButton
+                pRipple
+                (click)="irParaHome()"
+                label="Cadastrar-se"
+              ></button>
+            </div>
             <p-button
-            class="btn"
+              class="btn"
               label="Back"
               icon="pi pi-arrow-left"
               (onClick)="prevCallback.emit()"

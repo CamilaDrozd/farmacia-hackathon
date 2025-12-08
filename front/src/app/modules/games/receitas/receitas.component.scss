@@ -1,0 +1,21 @@
+.receitas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f8fafc;
+  align-items: center;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    p {
+      margin: 0;
+      font-weight: 700;
+    }
+  }
+}
