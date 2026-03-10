@@ -4,9 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
-import { perguntas } from '../../../db/perguntas.db';
 import { PerguntaInterface } from '../../interfaces/perguntas.interface';
-import { Medicamento } from '../../../enums/medicamentos.enum';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { Router, RouterModule } from '@angular/router';
@@ -23,10 +21,10 @@ import { Router, RouterModule } from '@angular/router';
     ToastModule,
   ],
   providers: [MessageService],
-  templateUrl: './games.component.html',
-  styleUrl: './games.component.scss',
+  templateUrl: './layout-questions.component.html',
+  styleUrl: './layout-questions.component.scss',
 })
-export class GamesComponent implements OnInit {
+export class LayoutQuestionsComponent implements OnInit {
   @Output() numberOutput = new EventEmitter<any>();
   @Input() bancoDados!: PerguntaInterface[];
   pontos: number = 0;
@@ -36,7 +34,10 @@ export class GamesComponent implements OnInit {
   cardAtual!: PerguntaInterface | undefined;
   resposta: string = '';
   loading = false;
-  constructor(private _message: MessageService, private _router: Router) {}
+  constructor(
+    private _message: MessageService,
+    private _router: Router,
+  ) {}
   ngOnInit(): void {
     this.cards = this.bancoDados.map((item) => {
       return {
@@ -59,7 +60,7 @@ export class GamesComponent implements OnInit {
         this._message.add({
           severity: 'success',
           detail: this.cardAtual?.alternativas.find(
-            (item) => item.alternativa === this.resposta
+            (item) => item.alternativa === this.resposta,
           )?.message,
         });
         this.step += 1;
@@ -74,7 +75,7 @@ export class GamesComponent implements OnInit {
         this._message.add({
           severity: 'error',
           detail: this.cardAtual?.alternativas.find(
-            (item) => item.alternativa === this.resposta
+            (item) => item.alternativa === this.resposta,
           )?.message,
         });
         this.pontosMaximo -= 10;

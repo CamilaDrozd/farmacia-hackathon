@@ -1,16 +1,2 @@
-<div class="sidebar">
-  <div class="sidebar__menu">
-    <button pButton icon="pi pi-bars" (click)="visible = true"></button>
-    <h2>{{ title }}</h2>
-  </div>
-  <div class="sidebar__user">
-    <i class="pi pi-bell text-3xl" pBadge value="2"></i>
-    <p-avatar label="P" styleClass="mr-2" size="normal" shape="circle" />
-  </div>
-  <p-sidebar [(visible)]="visible" position="left">
-    <img src="../assets/img/Farma-Educ-Logo.png" alt="" />
-    <h2 class="mb-3">Menu</h2>
-    <p-menu [model]="items"></p-menu>
-  </p-sidebar>
-</div>
-<router-outlet></router-outlet>
+<router-outlet>
+</router-outlet>

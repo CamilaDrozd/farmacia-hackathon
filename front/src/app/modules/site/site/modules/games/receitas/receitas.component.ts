@@ -6,11 +6,11 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageService } from 'primeng/api';
 import { RouterModule } from '@angular/router';
-import { MedicamentoGrupo } from '../../../enums/medicamento-grupo.enum';
-import { GamesComponent } from '../../../shared/components/games/games.component';
-import { perguntas } from '../../../db/perguntas.db';
-import { Dificuldades } from '../../../enums/dificuldades.enums';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { LayoutQuestionsComponent } from '../../../../../../shared/components/games/layout-questions.component';
+import { perguntas } from '../../../../../../db/perguntas.db';
+import { Dificuldades } from '../../../../../../enums/dificuldades.enums';
+import { MedicamentoGrupo } from '../../../../../../enums/medicamento-grupo.enum';
 @Component({
   standalone: true,
   imports: [
@@ -20,15 +20,15 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     InputTextModule,
     ReactiveFormsModule,
     RouterModule,
-    GamesComponent,
+    LayoutQuestionsComponent,
     SelectButtonModule,
   ],
   providers: [MessageService],
-  templateUrl: './grupo.component.html',
-  styleUrl: './grupo.component.scss',
+  templateUrl: './receitas.component.html',
+  styleUrl: './receitas.component.scss',
 })
-export class GrupoComponent implements OnInit {
-  title = 'Farmacologia em ação: Qual é o grupo ?';
+export class ReceitasComponent implements OnInit {
+  title = 'Receita certa: Desafio da farmácia';
   bancoDados = [...perguntas];
   dificuldade = Dificuldades.facil;
   form = new FormGroup({
@@ -42,14 +42,14 @@ export class GrupoComponent implements OnInit {
   pontos = 0;
   ngOnInit(): void {
     this.bancoDados
-      .filter((item) => item.grupo === MedicamentoGrupo.grupoFarmacologico)
+      .filter((item) => item.grupo === MedicamentoGrupo.tipoReceita)
       .splice(0, this.dificuldade);
   }
 
   alterandoDificuldade() {
     this.dificuldade = this.form.get('dificuldade')?.value as number;
     this.bancoDados = [...perguntas]
-      .filter((item) => item.grupo == MedicamentoGrupo.grupoFarmacologico)
+      .filter((item) => item.grupo == MedicamentoGrupo.tipoReceita)
       .splice(0, this.dificuldade);
   }
 

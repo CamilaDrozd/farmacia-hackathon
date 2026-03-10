@@ -27,7 +27,7 @@ import { InputTextModule } from 'primeng/inputtext';
 export class LoginComponent {
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl(''),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
   });
 
   constructor(private _router: Router) {}
@@ -36,11 +36,15 @@ export class LoginComponent {
     const formValue = this.loginForm.value;
     this._router.navigate(['/home']);
   }
-  irParaHome(){
+  irParaHome(): void{
     this._router.navigate(['/home']);
   }
 
-  irParaCadastro() {
+  forgotPassword(): void{
+    this._router.navigate(['/newPassword']);
+  }
+
+  irParaCadastro() : void {
     this._router.navigate(['/cadastro']);
   }
 }

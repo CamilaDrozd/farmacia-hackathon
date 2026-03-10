@@ -6,8 +6,8 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageService } from 'primeng/api';
 import { RouterModule } from '@angular/router';
-import { prescricao } from '../../../db/prescricao.db';
 import { Ripple } from 'primeng/ripple';
+import { prescricao } from '../../../../../../db/prescricao.db';
 @Component({
   standalone: true,
   imports: [

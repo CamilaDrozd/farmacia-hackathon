@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-import { GamesComponent } from '../../shared/components/games/games.component';
+import { LayoutQuestionsComponent } from '../../shared/components/games/layout-questions.component';
 import { Medicamento } from '../../enums/medicamentos.enum';
 import { MedicamentoGrupo } from '../../enums/medicamento-grupo.enum';
 import { MenuModule } from 'primeng/menu';
